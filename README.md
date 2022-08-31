@@ -11,7 +11,19 @@ Steps:
 5. Add validators to FormControls (fields). Import Validators from '@angular/forms' and use as second parmeter for any field you want to have validation for.
 6. Check/find validation errors in template using:{{ cardForm.controls["name"].errors | json }} or {{ cardForm.get("name")?.errors | json }}.
 7. Handle validation error in template; display a custom message using \*ngIf
-<div *ngIf="cardForm.controls['name'].errors['required']">Value is required.</div>
+<div *ngIf="cardForm.controls['name'].errors['required'] && cardForm.controls['name'].dirty &&
+      cardForm.controls['name'].touched">Value is required.</div>
+8. To check field's properties (FormControl), in ts file, inside constructor try console.log(this.cardForm.get('name'));
+   --- FormControl Properties ---
+   *valid = Angular validated whatever the user entered succesfully
+   *invalid = the value in the input invalid
+   *pending = validation is currently running on this field (for async validators)
+   *disabled = ignore user input in this field, don't validate it
+   *touched = user clicked into and then out of the field
+   *untouched = user hasn't clicked into and then out of the field
+   *pristine = user hasn't clicked into this field at all
+   *dirty = user has changed the value of the field
+   More: https://angular.io/api/forms/AbstractControl
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
