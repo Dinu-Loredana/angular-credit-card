@@ -4,7 +4,11 @@ Steps:
 
 1. Import ReactiveFormsModule from '@angular/forms' in app.module.ts.
 2. Generate card-form componenent that handles the form (ng g component CardForm)
-3. In card-form.comp.ts, import FormGroup and FormControl to define an instance of FormGroup and create inside it FormControls (fields)
+3. In card-form.comp.ts, import FormGroup and FormControl to define an instance of FormGroup and create inside it FormControls (fields).
+4. In card-from.comp.html create the form and bind <form [formGroup]="cardForm"> and <input formControlName="name" />.
+   *formGroup directive - binds the form (FormGroup) instance created in TS to the <form> element.
+   *formControlName directive - associates individual controls in the template to controls on the FormGroup instance by name; do not use binding here because it doesn't evaluate name as code.
+5.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
