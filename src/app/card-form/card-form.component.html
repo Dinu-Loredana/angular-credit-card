@@ -1,4 +1,4 @@
-<form [formGroup]="cardForm">
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
   <!--property binding, to pass down data (FormControl) from parent to child-->
   <app-input label="Name" [control]="$any(cardForm.get('name'))"></app-input>
   <app-input
@@ -13,6 +13,9 @@
     label="Security Code"
     [control]="$any(cardForm.get('securityCode'))"
   ></app-input>
+  <button type="submit" class="button is-primary" [disabled]="cardForm.invalid">
+    Submit
+  </button>
 </form>
 
 <!--For Debugging -->
