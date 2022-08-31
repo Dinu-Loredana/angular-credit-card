@@ -3,7 +3,17 @@ import { FormControl } from '@angular/forms';
 export class DataFormControl extends FormControl {
   override setValue(value: string, options: any) {
     console.log(value);
-    super.setValue(value + '*', options);
+    if (value.length === 2) {
+      super.setValue(value + '/', {
+        ...options,
+        emitModelToViewChange: true,
+      }); //it adds '/' after the first 2 digits, but if you want to delete, it'll add '/' again because length of value is 2.
+      return;
+    }
+    super.setValue(value, { ...options, emitModelToViewChange: true });
+
+    //super.setValue(value + '*', { ...options, emitModelToViewChange: true }); // it updates form object and also input in the DOM
+    // super.setValue(value + '*', options); // it adds '*' at the end of value and it reflects into from object, but it does't update the input field - use 'emitModelToViewChange' from 'options'
   }
 }
 
