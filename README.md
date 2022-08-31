@@ -25,6 +25,8 @@ Steps:
    *dirty = user has changed the value of the field
    More: https://angular.io/api/forms/AbstractControl
 
+9. If there are more inputs that need to be validated, create a reusable input component
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
 ## Development server

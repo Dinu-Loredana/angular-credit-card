@@ -1,25 +1,9 @@
 <form [formGroup]="cardForm">
-  <input formControlName="name" />
-  <ng-container
-    *ngIf="
-      cardForm.controls['name'].dirty &&
-      cardForm.controls['name'].touched &&
-      cardForm.controls['name'].errors
-    "
-  >
-    <div *ngIf="cardForm.controls['name'].errors['required']">
-      Value is required.
-    </div>
-    <div *ngIf="cardForm.controls['name'].errors['minlength']">
-      Value you entered is
-      {{cardForm.controls['name'].errors?.['minlength'].actualLength}}
-      characters, but it must be at least
-      {{cardForm.controls['name'].errors?.['minlength'].requiredLength}} long.
-    </div>
-  </ng-container>
+  <app-input [control]="$any(cardForm.get('name'))"></app-input>
+  <!--property binding, to pass down data (FormControl) from parent to child-->
 </form>
 
-<!--For Debugging-->
+<!--For Debugging -->
 <div>Form contents: {{ cardForm.value | json }}</div>
 <!--takes an object and prints out  JSON.-->
 <div>Form is valid: {{ cardForm.valid }}</div>
