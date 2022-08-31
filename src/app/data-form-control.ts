@@ -3,6 +3,30 @@ import { FormControl } from '@angular/forms';
 export class DataFormControl extends FormControl {
   override setValue(value: string, options: any) {
     console.log(value);
+    // don't allow user to type something else than just digits with regular expression
+    if (value.match(/[^0-9|\/]/gi)) {
+      super.setValue(this.value, { ...options, emitModelToViewChange: true }); //return current value
+      return;
+    }
+
+    // don't allow user to type more than 5 characters into the expiration input
+    if (value.length > 5) {
+      super.setValue(this.value, {
+        ...options,
+        emitModelToViewChange: true,
+      }); //return current value
+      return;
+    }
+
+    // allow user to detele '/' that was added automatically
+    if (value.length === 2 && this.value.length === 3) {
+      super.setValue(value, {
+        ...options,
+        emitModelToViewChange: true,
+      });
+      return;
+    }
+
     if (value.length === 2) {
       super.setValue(value + '/', {
         ...options,
