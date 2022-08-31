@@ -1,20 +1,20 @@
 <input [formControl]="control" />
 <!--register the control in the template, bind control property from TS into this form control field-->
 
-<!-- <ng-container
-    *ngIf="
-      cardForm.controls['name'].dirty &&
-      cardForm.controls['name'].touched &&
-      cardForm.controls['name'].errors
-    "
-  >
-    <div *ngIf="cardForm.controls['name'].errors['required']">
-      Value is required.
-    </div>
-    <div *ngIf="cardForm.controls['name'].errors['minlength']">
-      Value you entered is
-      {{cardForm.controls['name'].errors?.['minlength'].actualLength}}
-      characters, but it must be at least
-      {{cardForm.controls['name'].errors?.['minlength'].requiredLength}} long.
-    </div>
-  </ng-container> -->
+<ng-container *ngIf="control.dirty && control.touched && control.errors">
+  <div *ngIf="control.errors['required']">Value is required.</div>
+  <div *ngIf="control.errors['minlength']">
+    Value you entered is
+    {{control.errors?.['minlength'].actualLength}}
+    characters, but it must be at least
+    {{control.errors?.['minlength'].requiredLength}} long.
+  </div>
+  <!-- Add extra validation messages to make the input more reusable  -->
+  <div *ngIf="control.errors['maxlength']">
+    Value you entered is
+    {{control.errors?.['maxlength'].actualLength}}
+    characters long, but it can't be longer than
+    {{control.errors?.['maxlength'].requiredLength}} charachers.
+  </div>
+  <div *ngIf="control.errors?.['pattern']">Invalid character pattern</div>
+</ng-container>
