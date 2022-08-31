@@ -29,8 +29,9 @@ Steps:
 10. To create a label text reusable, dynamic, add in ts file @Input() label!: string so the Input template can receive from the parent the text for the label (<app-input label="Name" [control]="$any(cardForm.get('name'))"></app-input>) and display it using interpolation(<label class="label">{{ label }}</label>).
 11. To create more input fields, add in card-form.com.ts more FormControls and in the template reuse the Input component and pass down label and control for each input.
 12. To submit the form: in card-form.comp.html add <button type="submit" class="button is-primary" [disabled]="cardForm.invalid">Submit</button> before closing </form> tag. Define the handler func logic into card-form.comp.ts.
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
+13. Use inputs masking for Expiration ans Security Code fields.
+14. Input masking - hijacking FormControl: - generate a class (ng g class DataFormControl) and extends FormControl class and overwrite some logic
+    This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
 ## Development server
 
