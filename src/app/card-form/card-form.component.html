@@ -1,5 +1,5 @@
 <form [formGroup]="cardForm">
-  <app-input [control]="$any(cardForm.get('name'))"></app-input>
+  <app-input label="Name" [control]="$any(cardForm.get('name'))"></app-input>
   <!--property binding, to pass down data (FormControl) from parent to child-->
 </form>
 
