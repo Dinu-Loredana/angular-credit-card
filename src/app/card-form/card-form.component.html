@@ -1,5 +1,16 @@
 <form [formGroup]="cardForm">
   <input formControlName="name" />
+  <ng-container *ngIf="cardForm.controls['name'].errors">
+    <div *ngIf="cardForm.controls['name'].errors['required']">
+      Value is required.
+    </div>
+    <div *ngIf="cardForm.controls['name'].errors['minlength']">
+      Value you entered is
+      {{cardForm.controls['name'].errors?.['minlength'].actualLength}}
+      characters, but it must be at least
+      {{cardForm.controls['name'].errors?.['minlength'].requiredLength}} long.
+    </div>
+  </ng-container>
 </form>
 
 <!--For Debugging-->
@@ -10,3 +21,7 @@
 <!--Check Validation Errors-->
 <div>Errors around name: {{ cardForm.controls["name"].errors | json }}</div>
 <div>Same errors: {{ cardForm.get("name")?.errors | json }}</div>
+<div>
+  MinLength properties:
+  {{ cardForm.controls["name"].errors?.['minlength'] | json }}
+</div>
