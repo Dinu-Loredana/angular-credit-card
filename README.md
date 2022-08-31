@@ -25,7 +25,8 @@ Steps:
    *dirty = user has changed the value of the field
    More: https://angular.io/api/forms/AbstractControl
 
-9. If there are more inputs that need to be validated, create a reusable input component
+9. If there are more inputs that need to be validated, create a reusable input component. You can add extra errors messages in case other inputs has different validators to make it more reusable.
+10. To create a label text reusable, dynamic, add in ts file @Input() label!: string so the Input template can receive from the parent the text for the label (<app-input label="Name" [control]="$any(cardForm.get('name'))"></app-input>) and display it using interpolation(<label class="label">{{ label }}</label>).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
