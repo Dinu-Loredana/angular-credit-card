@@ -9,6 +9,7 @@ Steps:
    *formGroup directive - binds the form (FormGroup) instance created in TS to the <form> element.
    *formControlName directive - associates individual controls in the template to controls on the FormGroup instance by name; do not use binding here because it doesn't evaluate name as code.
 5. Add validors to FormControls (fields). Import Validators from '@angular/forms' and use as second parmeter for any field you want to have validation for.
+6. Check/find validation errors in template using:{{ cardForm.controls["name"].errors | json }} or {{ cardForm.get("name")?.errors | json }}.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
