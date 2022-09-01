@@ -1,6 +1,25 @@
 # AngularCreditCard
 
-Steps:
+Smapp Angular app to learn about Reactive Forms.
+Reactive Forms:
+
+- are defined in the component class (TS file)
+- available in ReactiveFormsModules (@angular/forms)
+- made with templates (html) + TS, easy type of form
+- suitable for complex form validation
+- suitable for unit testing
+- known also as model-driven forms => we design our forms in the component (TS file) and then bind them or relate them to our HTML template
+- a reactive form is a FormGroup that is made up of FormControls
+
+---
+
+#Have the form in the template.
+#Create in the class component (ts) equivalent for form and each form field using FormGroup (form)and FormControl (input, eg) (or FormBuilder).
+#Patch up the equivalent using [formGroup] for the form tag and for the form field either [formControl] directive or formControlName.
+
+---
+
+Notes:
 
 1.  Import ReactiveFormsModule from '@angular/forms' in app.module.ts.
 2.  Generate card-form componenent that handles the form (ng g component CardForm)
@@ -41,29 +60,3 @@ Steps:
 
     - 'reset' - built-in method of FormGroup that reset the input to 'null', not back to its initial value ('');
     - handle error - into data-form-control.ts add another case to set the value of the input to '' if there is no value (null or undefined) to avoid the error.
-
-      This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
