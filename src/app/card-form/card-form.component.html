@@ -1,38 +1,54 @@
-<form class="form" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
-  <!--property binding, to pass down data (FormControl) from parent to child-->
-  <app-input label="Name" [control]="$any(cardForm.get('name'))"></app-input>
-  <app-input
-    label="Card Number"
-    [control]="$any(cardForm.get('cardNumber'))"
-  ></app-input>
-  <div class="columns">
-    <div class="column">
-      <app-input
-        label="Expiration (MM/YY)"
-        [control]="$any(cardForm.get('expiration'))"
-      ></app-input>
-    </div>
-    <div class="column">
-      <app-input
-        label="Security Code"
-        [control]="$any(cardForm.get('securityCode'))"
-      ></app-input>
-    </div>
-  </div>
-  <div class="buttons">
-    <button
-      type="submit"
-      class="button is-primary"
-      [disabled]="cardForm.invalid"
-    >
-      Submit
-    </button>
-    <button type="button" class="button is-danger" (click)="onResetClick()">
-      Reset
-    </button>
-  </div>
-</form>
+<h1 class="title">Your credit card details</h1>
 
+<div class="columns">
+  <div class="column">
+    <app-card
+      [name]="cardForm.get('name')?.value"
+      [cardNumber]="cardForm.get('cardNumber')?.value"
+      [expiration]="cardForm.get('expiration')?.value"
+    >
+    </app-card>
+  </div>
+  <div class="column">
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+      <!--property binding, to pass down data (FormControl) from parent to child-->
+      <app-input
+        label="Name"
+        [control]="$any(cardForm.get('name'))"
+      ></app-input>
+      <app-input
+        label="Card Number"
+        [control]="$any(cardForm.get('cardNumber'))"
+      ></app-input>
+      <div class="columns">
+        <div class="column">
+          <app-input
+            label="Expiration (MM/YY)"
+            [control]="$any(cardForm.get('expiration'))"
+          ></app-input>
+        </div>
+        <div class="column">
+          <app-input
+            label="Security Code"
+            [control]="$any(cardForm.get('securityCode'))"
+          ></app-input>
+        </div>
+      </div>
+      <div class="buttons">
+        <button
+          type="submit"
+          class="button is-primary"
+          [disabled]="cardForm.invalid"
+        >
+          Submit
+        </button>
+        <button type="button" class="button is-danger" (click)="onResetClick()">
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 <!-- For Debugging -->
 <!-- <div>Form is valid: {{ cardForm.valid }}</div> -->
 <!-- <div>Form contents: {{ cardForm.value | json }}</div> -->

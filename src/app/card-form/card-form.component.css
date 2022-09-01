@@ -1,3 +1,13 @@
-.form {
+.title {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-variant: small-caps;
+  color: navy;
   margin: 2rem auto;
+  padding: 0.6rem;
+  border: 0.2rem solid aliceblue;
+  border-radius: 0.2rem;
+  background-color: aliceblue;
+  box-shadow: 1px 5px 6px 0px gray;
 }
