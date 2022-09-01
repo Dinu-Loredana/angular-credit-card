@@ -31,14 +31,18 @@ Steps:
 12. To submit the form: in card-form.comp.html add <button type="submit" class="button is-primary" [disabled]="cardForm.invalid">Submit</button> before closing </form> tag. Define the handler func logic into card-form.comp.ts.
 13. Use inputs masking for Expiration ans Security Code fields.
 14. Input masking - hijacking FormControl: - generate a class (ng g class DataFormControl) and extends FormControl class and overwrite some logic
-15. Alternative to input masking is ngx-mask package (npm i ngx-mask). To configure it, in app.module.ts add:
+15. Alternative to input masking is ngx-mask package (npm i ngx-mask). To configure it, in app. module.ts add:
     import { NgxMaskModule, IConfig } from 'ngx-mask';
     export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     NgxMaskModule.forRoot(options) to imports of NgModule
     then in input.comp.html add mask="SSSS SSSS" to format input to add space after first 4 letters;
     problems with this -> it formats just the input (UI, john john), but the form data will be 'johnjohn' - not formatted.
+16. Reset form - add into card-form.comp.html <button type="button" class="button is-danger" (click) ="onResetClick()">Reset</button> and add the handler fn logic into TS file.
 
-        This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
+    - 'reset' - built-in method of FormGroup that reset the input to 'null', not back to its initial value ('');
+    - handle error - into data-form-control.ts add another case to set the value of the input to '' if there is no value (null or undefined) to avoid the error.
+
+      This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
 ## Development server
 

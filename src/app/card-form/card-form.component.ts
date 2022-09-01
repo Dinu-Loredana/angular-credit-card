@@ -39,4 +39,8 @@ export class CardFormComponent implements OnInit {
   onSubmit() {
     console.log('Form submitted');
   }
+  onResetClick() {
+    //FormGroup has a built-in method 'reset' that reset the fields to 'null', not back to inital value ('')
+    this.cardForm.reset(); //error if not handle null
+  }
 }

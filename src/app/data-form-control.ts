@@ -3,6 +3,12 @@ import { FormControl } from '@angular/forms';
 export class DataFormControl extends FormControl {
   override setValue(value: string, options: any) {
     console.log(value);
+    // set Value to '' if value is null (for resetting - to avoid error)
+    if (!value) {
+      super.setValue('', { ...options, emitModelToViewChange: true });
+      return;
+    }
+
     // don't allow user to type something else than just digits with regular expression
     if (value.match(/[^0-9|\/]/gi)) {
       super.setValue(this.value, { ...options, emitModelToViewChange: true }); //return current value
